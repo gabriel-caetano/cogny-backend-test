@@ -4,7 +4,7 @@ const monitor = require('pg-monitor');
 
 // Call start
 (async () => {
-    console.log('main.js: before start');
+    console.log('index.js: before start');
 
     const db = await massive({
         connectionString: DATABASE_URL,
@@ -82,5 +82,5 @@ const monitor = require('pg-monitor');
     } finally {
         console.log('finally');
     }
-    console.log('main.js: after start');
+    console.log('index.js: after start');
 })();
