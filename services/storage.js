@@ -10,4 +10,8 @@ async function findByName(name, repository) {
   return res[0];
 }
 
-module.exports = { insert, findByName };
+async function update(data, repository) {
+  return repository.update({ doc_name: data.doc_name }, data);
+}
+
+module.exports = { insert, findByName, update };
