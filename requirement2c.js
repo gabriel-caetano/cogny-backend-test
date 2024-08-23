@@ -3,8 +3,6 @@
 async function requirement2c(repository) {
   try {
     const res = await repository.population_sum.find({ doc_name: process.env.DOC_NAME });
-    console.log(res);
-
     const { sum } = res[0];
     console.log('result2c >> sum of population', sum);
 
