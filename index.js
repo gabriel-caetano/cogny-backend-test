@@ -2,6 +2,9 @@ const { DATABASE_SCHEMA, DATABASE_URL, SHOW_PG_MONITOR } = require('./config');
 const massive = require('massive');
 const monitor = require('pg-monitor');
 const requirement1 = require('./requirement1');
+const requirement2a = require('./requirement2a');
+// const requirement2b = require('./requirement2b');
+// const requirement2c = require('./requirement2c');
 
 // Call start
 (async () => {
@@ -68,6 +71,9 @@ const requirement1 = require('./requirement1');
 
         // usando injeção de dependência para diminuir o acoplamento
         await requirement1(db[DATABASE_SCHEMA].api_data);
+        await requirement2a(db[DATABASE_SCHEMA].api_data);
+        // await requirement2b(db[DATABASE_SCHEMA].api_data);
+        // await requirement2c(db[DATABASE_SCHEMA].api_data);
 
 
         // //exemplo de insert
