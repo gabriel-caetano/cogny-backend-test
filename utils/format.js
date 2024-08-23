@@ -4,10 +4,8 @@
 function format(data) {
   return {
     is_active: data.data ? true : false,
-    created_at: new Date(),
-    updated_at: new Date(),
     is_deleted: false,
-    deleted_at: false,
+    deleted_at: null,
     api_name: 'datausa.io',
     doc_id: null,
     doc_name: data.source[0].name,
