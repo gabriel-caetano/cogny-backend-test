@@ -3,8 +3,8 @@ const massive = require('massive');
 const monitor = require('pg-monitor');
 const requirement1 = require('./requirement1');
 const requirement2a = require('./requirement2a');
-// const requirement2b = require('./requirement2b');
-// const requirement2c = require('./requirement2c');
+const requirement2b = require('./requirement2b');
+const requirement2c = require('./requirement2c');
 
 // Call start
 (async () => {
@@ -72,21 +72,8 @@ const requirement2a = require('./requirement2a');
         // usando injeção de dependência para diminuir o acoplamento
         await requirement1(db[DATABASE_SCHEMA].api_data);
         await requirement2a(db[DATABASE_SCHEMA].api_data);
-        // await requirement2b(db[DATABASE_SCHEMA].api_data);
-        // await requirement2c(db[DATABASE_SCHEMA].api_data);
-
-
-        // //exemplo de insert
-        // const result1 = await db[DATABASE_SCHEMA].api_data.insert({
-        //     doc_record: { 'a': 'b' },
-        // })
-        // console.log('result1 >>>', result1);
-
-        // //exemplo select
-        // const result2 = await db[DATABASE_SCHEMA].api_data.find({
-        //     is_active: true
-        // });
-        // console.log('result2 >>>', result2);
+        await requirement2b(db);
+        await requirement2c(db[DATABASE_SCHEMA]);
 
     } catch (e) {
         console.log(e.message)
