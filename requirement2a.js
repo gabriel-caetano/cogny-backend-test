@@ -2,7 +2,7 @@ const Storage = require('./services/storage');
 
 async function requirement2a(repository) {
   try {
-    const api_data = await Storage.findByName(process.env.DOC_NAME, repository);
+    const api_data = await Storage.findById(process.env.API_DATA_ID, repository);
 
     const records = api_data.doc_record;
     const filtered = records.filter((r) => {

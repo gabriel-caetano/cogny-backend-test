@@ -8,16 +8,16 @@ const { DATABASE_SCHEMA } = require('./config');
 async function requirement2b(repository) {
   try {
     const queryString =
-      "select doc_name, sum(population_by_year) " +
+      "select id, sum(population_by_year) " +
       " from ( " +
-      " select doc_name, (json->>'Population')::bigint as population_by_year " +
+      " select id, (json->>'Population')::bigint as population_by_year " +
       " from ( " +
-      "   select doc_name, jsonb_array_elements(doc_record) as json " +
+      "   select id, jsonb_array_elements(doc_record) as json " +
       "   from " + DATABASE_SCHEMA + ".api_data " +
       " ) as record_elements " +
       " where (json->>'Year')::int in (2018, 2019, 2020) " +
-      ") where doc_name = '" + process.env.DOC_NAME + "' " +
-      "group by doc_name;"
+      ") where id = '" + process.env.API_DATA_ID + "' " +
+      "group by id;"
     const res = await repository.query(queryString);
     const { sum } = res[0];
     console.log('result2b >> sum of population', sum);
