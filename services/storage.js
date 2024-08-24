@@ -10,8 +10,14 @@ async function findByName(name, repository) {
   return res[0];
 }
 
+async function findById(id, repository) {
+  const res = await repository.find({ id });
+  if (res.length === 0) return;
+  return res[0];
+}
+
 async function update(data, repository) {
   return repository.update({ doc_name: data.doc_name }, data);
 }
 
-module.exports = { insert, findByName, update };
+module.exports = { insert, findByName, findById, update };
